@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <main>
+        <div class="sidebar">
+            <nav>
+                <h1>INEGI</h1>
+                <ul>
+                    <li><a href=" {% url "menu" %} ">Inicio</a></li>
+                    <li><a href=" {% url "locality" %} ">Localidades</a></li>
+                    <li><a href="#">Vivienda</a></li>
+                    <li><a href="#">Habitantes</a></li>
+                    <li><a href="#">Actividad Economicas</a></li>
+    
+                    <div class="Logout">
+                        <input type="submit" value="Logout" onclick="location.href=' {% url 'logout' %} '">
+                    </div>
+                </ul>
+            </nav>
+        </div>
+        {% block main_content %}
+
+        {% endblock %}
+    </main>
+
+</body>
+</html>

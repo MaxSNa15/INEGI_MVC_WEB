@@ -1,0 +1,18 @@
+{% extends "layouts/layout.html" %}
+
+{%block title %}
+    {{title}}
+{% endblock %}
+
+{% block body_content %}
+    <main>
+        <h1>{{say}}</h1>
+
+        {% load static %}
+        <img src="{% static 'img/INEGI.png' %}" alt="My image" />
+
+        <ul>
+            <li><a href="{% url 'login' %}">Inicio de sesion</a></li>
+        </ul>
+    </main>
+{% endblock %}

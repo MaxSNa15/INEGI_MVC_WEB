@@ -1,0 +1,25 @@
+{% extends "layouts/layout.html" %}
+
+{%block title %}
+    {{title}}
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="form">
+            <h2>Inicio</h2>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="inputBox">
+                    <input type="text" name="username" placeholder="Username" />
+                </div>
+                <div class="inputBox">
+                    <input type="password" name="password" placeholder="Password" />
+                </div>
+                <div class="inputBox">
+                    <input type="submit" value="Login" />
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
