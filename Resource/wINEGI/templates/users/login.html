@@ -11,9 +11,11 @@
             <form method="POST" action="">
                 {% csrf_token %}
                 <div class="inputBox">
+                    <label for="username">Username</label>
                     <input type="text" name="username" placeholder="Username" />
                 </div>
                 <div class="inputBox">
+                    <label for="password">Password</label>
                     <input type="password" name="password" placeholder="Password" />
                 </div>
                 <div class="inputBox">

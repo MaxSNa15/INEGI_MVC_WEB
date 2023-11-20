@@ -1,14 +1,14 @@
 {% extends "layouts/layout.html" %}
+{% load static %}
 
 {%block title %}
-    {{title}}
+{{title}}
 {% endblock %}
 
 {% block body_content %}
     <main>
         <h1>{{say}}</h1>
 
-        {% load static %}
         <img src="{% static 'img/INEGI.png' %}" alt="My image" />
 
         <ul>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,32 +9,45 @@
         {% endblock %}
     </title>
     
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
 </head>
 <body>
 
+    <header>
+        {% block header_content %}
+
+        {% endblock %}
+    </header>
+
+    <aside>
+        <nav>
+            <h1>INEGI</h1>
+            <ul>
+                <li><a href=" {% url "menu" %} ">Inicio</a></li>
+                <li><a href=" {% url "locality" %} ">Localidades</a></li>
+                <li><a href="#">Vivienda</a></li>
+                <li><a href="#">Habitantes</a></li>
+                <li><a href="#">Actividad Economicas</a></li>
+
+                <div class="Logout">
+                    <input type="submit" value="Logout" onclick="location.href=' {% url 'logout' %} '">
+                </div>
+            </ul>
+        </nav>
+    </aside>
+
     <main>
-        <div class="sidebar">
-            <nav>
-                <h1>INEGI</h1>
-                <ul>
-                    <li><a href=" {% url "menu" %} ">Inicio</a></li>
-                    <li><a href=" {% url "locality" %} ">Localidades</a></li>
-                    <li><a href="#">Vivienda</a></li>
-                    <li><a href="#">Habitantes</a></li>
-                    <li><a href="#">Actividad Economicas</a></li>
-    
-                    <div class="Logout">
-                        <input type="submit" value="Logout" onclick="location.href=' {% url 'logout' %} '">
-                    </div>
-                </ul>
-            </nav>
-        </div>
         {% block main_content %}
 
         {% endblock %}
     </main>
+
+    <footer>
+        {% block footer_content %}
+
+        {% endblock %}
+    </footer>
 
 </body>
 </html>

@@ -15,29 +15,3 @@ form.addEventListener("submit", function (event) {
     }
 
 });
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    var form = document.querySelector('.Forms-reb');
-
-    form.addEventListener('submit', function(event) {
-        var formIsValid = true;
-        var name = document.getElementById('name').value;
-
-        if (name.trim() === '') {
-            alert('Por favor, ingresa tu nombre.');
-            formIsValid = false; // El formulario no es válido
-        }
-
-        var municipality = document.getElementById('municipality').value;
-
-        if (municipality.trim() === '') {
-            alert('Por favor, selecciona un municipio.');
-            formIsValid = false; // El formulario no es válido
-        }
-
-        if (!formIsValid) {
-            event.preventDefault();
-        }
-    });
-});
