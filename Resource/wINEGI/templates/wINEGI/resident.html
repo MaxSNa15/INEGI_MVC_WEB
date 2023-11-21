@@ -1,0 +1,23 @@
+{% extends "layouts/layout-menu.html" %}
+
+{%block title %}
+    {{title}}
+{% endblock %}
+
+{% block main_content %}
+
+    <form method="POST" action="" class ="Forms-reb" >
+        {% csrf_token %}
+
+        <fieldset>
+            <legend>Habitantes</legend>
+        {% for field in resident_form %}
+            <label>{{ field.label }}</label>
+            {{ field }}
+        {% endfor %}
+        </fieldset>
+        
+        <input type="submit" value="Guardar">
+    </form>
+
+{% endblock %}

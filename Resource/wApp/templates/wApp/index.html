@@ -6,13 +6,11 @@
 {% endblock %}
 
 {% block body_content %}
-    <main>
+<div class="inicio">
         <h1>{{say}}</h1>
-
-        <img src="{% static 'img/INEGI.png' %}" alt="My image" />
-
+        <img width=300 height=300 src="{% static 'img/INEGI.png' %}" alt="My image" />
         <ul>
             <li><a href="{% url 'login' %}">Inicio de sesion</a></li>
         </ul>
-    </main>
+    </div>
 {% endblock %}

@@ -14,21 +14,17 @@
 </head>
 <body>
 
-    <header>
-        {% block header_content %}
-
-        {% endblock %}
-    </header>
+    <header>{% block header_content %}{% endblock %}</header>
 
     <aside>
         <nav>
-            <h1>INEGI</h1>
+            <h2>INEGI Administrador</h2>
             <ul>
                 <li><a href=" {% url "menu" %} ">Inicio</a></li>
                 <li><a href=" {% url "locality" %} ">Localidades</a></li>
-                <li><a href="#">Vivienda</a></li>
-                <li><a href="#">Habitantes</a></li>
-                <li><a href="#">Actividad Economicas</a></li>
+                <li><a href=" {% url "residence" %}">Vivienda</a></li>
+                <li><a href=" {% url "resident" %}">Habitantes</a></li>
+                <li><a href=" {% url "economic" %}">Actividad Economicas</a></li>
 
                 <div class="Logout">
                     <input type="submit" value="Logout" onclick="location.href=' {% url 'logout' %} '">
@@ -37,16 +33,11 @@
         </nav>
     </aside>
 
-    <main>
-        {% block main_content %}
-
-        {% endblock %}
-    </main>
+    <main>{% block main_content %}{% endblock %}</main>
 
     <footer>
-        {% block footer_content %}
-
-        {% endblock %}
+        <p>Derechos reservados INEGI &copy -  2023</p>
+        {% block footer_content %}{% endblock %}
     </footer>
 
 </body>
