@@ -24,9 +24,27 @@ class Locality(models.Model):
         return self.name
 
 class Residence(models.Model):
+    TYPE_OF_RESIDENCE_CHOICES = [
+        ('concreto', 'Concreto'),
+        ('adobe_antiguo', 'Adobe Antiguo'),
+        ('ladrillo', 'Ladrillo'),
+        ('madera', 'Madera'),
+        ('carton', 'Cartón'),
+        ('piedra', 'Piedra'),
+        ('prefabricada', 'Prefabricada'),
+        ('material_ecologico', 'Material Ecológico'),
+        ('paja_ramas_caña', 'Paja/Ramas/Caña'),
+        ('adobe_moderno', 'Adobe Moderno'),
+    ]
+    
     adress = models.CharField(max_length=50, verbose_name="Dirección")
-    type_of_residence = models.CharField(max_length=20, verbose_name="Tipo de vivienda")
-    locality = models.ForeignKey(Locality, on_delete=models.CASCADE, verbose_name="Localidad")
+    type_of_residence = models.CharField(
+        max_length=20,
+        verbose_name="Tipo de vivienda",
+        choices=TYPE_OF_RESIDENCE_CHOICES,  
+        default='concreto' 
+    )
+    locality = models.ForeignKey('Locality', on_delete=models.CASCADE, verbose_name="Localidad")
 
     class Meta:
         verbose_name = "Vivienda"
@@ -36,11 +54,16 @@ class Residence(models.Model):
         return self.adress
 
 class Resident(models.Model):
+    TYPE_OF_GENDER_CHOICES = [
+        ('hombre', 'Hombre'),
+        ('mujer', 'Mujer'),
+        ('otro', 'Otro')
+    ]
     first_name = models.CharField(max_length=30, verbose_name="Nombre")
     last_name = models.CharField(max_length=30, verbose_name="Apellido")
     age = models.IntegerField(verbose_name="Edad")
     birthdate = models.DateField(verbose_name="Fecha de nacimiento")
-    gender = models.CharField(max_length=10, verbose_name="Género")
+    gender = models.CharField(max_length=10, verbose_name="Género", choices=TYPE_OF_GENDER_CHOICES, default='hombre')
     residence = models.ForeignKey(Residence, on_delete=models.CASCADE, verbose_name="Vivienda")
 
     class Meta:
@@ -53,7 +76,7 @@ class Resident(models.Model):
 class EconomicActivity(models.Model):
     name = models.CharField(max_length=30, verbose_name="Nombre")
     description = models.CharField(max_length=100, verbose_name="Descripción")
-    recident = models.ManyToManyField(Resident, verbose_name="Residente")
+    residence = models.ManyToManyField(Residence, verbose_name="Vivienda")
 
     class Meta:
         verbose_name = "Actividad económica"

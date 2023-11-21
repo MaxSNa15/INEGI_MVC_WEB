@@ -102,18 +102,18 @@ class ResidentForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'class':'form-control' , 'id' :'last_name'}),
             'age': forms.NumberInput(attrs={'class':'form-control' , 'id' :'age'}),
             'birthdate': forms.DateInput(attrs={'class':'form-control' , 'id' :'birthdate'}),
-            'gender': forms.TextInput(attrs={'class':'form-control', 'id' : 'gender' }),
+            'gender': forms.Select(attrs={'class':'form-control', 'id' : 'gender' }),
             'residence': forms.Select(attrs={'class':'form-control', 'id' : 'residence' }),
         }
 
 class EconomicActivityForm(forms.ModelForm):
     class Meta:
         model = EconomicActivity
-        fields = ['name', 'description', 'recident']
+        fields = ['name', 'description', 'residence']
         help_texts = {
             'name': 'Nombre de la actividad económica',
             'description': 'Descripción de la actividad económica',
-            'recident': 'Residente que realiza la actividad económica',
+            'residence': 'Vivienda a la que pertenece',
         }
         error_messages = {
             'name': {
@@ -122,17 +122,17 @@ class EconomicActivityForm(forms.ModelForm):
             'description': {
                 'max_length': 'La descripción es muy larga',
             },
-            'recident': {
-                'required': 'El residente es requerido',
+            'residence': {
+                'required': 'La vivienda es requerida',
             },
         }
         labels = {
             'name': 'Nombre',
             'description': 'Descripción',
-            'recident': 'Residente',
+            'residence': 'Vivienda',
         }
         widgets = {
             'name': forms.TextInput(attrs={'class':'form-control' , 'id' :'name'}),
             'description': forms.TextInput(attrs={'class':'form-control' , 'id' :'description'}),
-            'recident': forms.Select(attrs={'class':'form-control', 'id' : 'recident' }),
+            'residence': forms.Select(attrs={'class':'form-control', 'id' : 'residence' }),
         }
