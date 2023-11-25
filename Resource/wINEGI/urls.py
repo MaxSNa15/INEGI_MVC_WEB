@@ -8,5 +8,7 @@ urlpatterns = [
     path("locality/", views.locality, name="locality"),
     path("residence/", views.residence, name="residence"),
     path("resident/", views.resident, name="resident"),
-    path("economic/", views.economic, name="economic")
+    path("economic/", views.economic, name="economic"),
+    path("dasboard/", views.dasboard, name="dasboard"),
+
 ]

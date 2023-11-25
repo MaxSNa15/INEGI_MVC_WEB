@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import LocalityForm, ResidenceForm, ResidentForm, EconomicActivityForm
+from .models import Municipality, Locality, Residence, Resident, EconomicActivity
 
 
 def login_page(request):
@@ -104,4 +105,13 @@ def economic(request):
     return render(request, 'wINEGI/economic.html', {
         'title': 'Actividad económica',
         'economic_form': economic_form,
+    })
+
+@login_required(login_url='login')
+def dasboard(request):
+    municipalityList = Municipality.objects.all()
+
+    return render(request, 'wINEGI/dasboard.html', {
+        'title': 'Dasboard',
+        'municipalityList': municipalityList,
     })

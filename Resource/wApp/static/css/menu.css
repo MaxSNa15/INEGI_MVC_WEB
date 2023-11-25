@@ -5,7 +5,7 @@ body {
     grid-template-rows: 50px minmax(50px, 1fr) 35px;
     min-height: 100vh;
     grid-template-areas: 
-        "header header header header"
+        "aside header header header"
         "aside main main main"
         "footer footer footer footer";
     font-family: sans-serif, Arial;
@@ -56,8 +56,103 @@ aside ul li a:hover {
     transition: .3s;
 }
 
+aside .Logout{
+    bottom: 10rem;
+    position: absolute;
+}
+
+aside input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    border: .1rem solid #111;
+    margin: 1rem 0;
+}
+
+aside input[type="submit"] {
+    background: lightcoral;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+aside input[type="submit"]:hover {
+    background: tomato;
+    transition: .3s;
+}
+
 main {
     grid-area: main;
+
+}
+
+main form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+main fieldset{
+    border: .1rem solid #111;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+main fieldset legend{
+    font-size: 2rem;
+}
+
+main fieldset label{
+    font-size: 1.5rem;
+}
+
+main fieldset input[type="text"]{
+    width: 99%;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    border: .1rem solid #111;
+    margin: 1rem 0;
+}
+
+main fieldset input[type="number"]{
+    width: 99%;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    border: .1rem solid #111;
+    margin: 1rem 0;
+}
+
+main fieldset select{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    border: .1rem solid #111;
+    margin: 1rem 0;
+
+}
+
+main fieldset input{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    border: .1rem solid #111;
+    margin: 1rem 0;
+}
+
+main input[type="submit"] {
+    background: lightcoral;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 1.5rem;
+}
+
+main input[type="submit"]:hover {
+    background: tomato;
+    transition: .3s;
 }
 
 footer {

@@ -4,13 +4,17 @@
     {{title}}
 {% endblock %}
 
+{% block header_content %}
+    <h3>Creación de Actividades Economicas</h3>
+{% endblock %}
+
 {% block main_content %}
 
     <form method="POST" action="" class ="Forms-reb" >
         {% csrf_token %}
 
         <fieldset>
-            <legend>Habitantes</legend>
+            <legend>Actividades Economicas</legend>
         {% for field in economic_form %}
             <label>{{ field.label }}</label>
             {{ field }}
