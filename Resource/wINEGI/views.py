@@ -110,8 +110,16 @@ def economic(request):
 @login_required(login_url='login')
 def dasboard(request):
     municipalityList = Municipality.objects.all()
+    localityList = Locality.objects.all()
+    residenceList = Residence.objects.all()
+    residentList = Resident.objects.all()
+    economicList = EconomicActivity.objects.all()
 
     return render(request, 'wINEGI/dasboard.html', {
         'title': 'Dasboard',
         'municipalityList': municipalityList,
+        'localityList': localityList,
+        'residenceList': residenceList,
+        'residentList': residentList,
+        'economicList': economicList,
     })

@@ -5,27 +5,129 @@
 {% endblock %}
 
 {% block header_content %}
-    <h3>{{title}}</h3>
+    <h3> DASHBOARD </h3>
 {% endblock %}
 
 {% block main_content %}
-    <h3> Listado de Municipios </h3>
-    <table class="lista-table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Region</th>
-                <th>Poblacion en 2020</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for municipio in municipalityList %}
+    <div class="tablita">
+        <h3 class="titulo-tabla"> Listado de Municipios </h3>
+        <table class="lista-table">
+            <thead>
                 <tr>
-                    <td>{{municipio.name}}</td>
-                    <td>{{municipio.region}}</td>
-                    <td>{{municipio.population}}</td>
+                    <th>Nombre</th>
+                    <th>Region</th>
+                    <th>Poblacion en 2020</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for municipio in municipalityList %}
+                    <tr>
+                        <td>{{municipio.name}}</td>
+                        <td>{{municipio.region}}</td>
+                        <td>{{municipio.population}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div class="tablita">
+        <h3 class="titulo-tabla"> Listado de Localidades </h3>
+        <table class="lista-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Municipios</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for locality in localityList %}
+                    <tr>
+                        <td>{{locality.name}}</td>
+                        <td>{{locality.municipality}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div class="tablita">
+        <h3 class="titulo-tabla"> Listado de Viviendas </h3>
+        <table class="lista-table">
+            <thead>
+                <tr>
+                    <th>Dirección</th>
+                    <th>Tipo de Vivienda</th>
+                    <th>Localidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for residence in residenceList %}
+                    <tr>
+                        <td>{{residence.adress}}</td>
+                        <td>{{residence.type_of_residence}}</td>
+                        <td>{{residence.locality}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div class="tablita">
+        <h3 class="titulo-tabla"> Listado de Habitantes </h3>
+        <table class="lista-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Genero</th>
+                    <th>Vivienda</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resident in residentList %}
+                    <tr>
+                        <td>{{resident.first_name}}</td>
+                        <td>{{resident.last_name}}</td>
+                        <td>{{resident.age}}</td>
+                        <td>{{resident.birthdate}}</td>
+                        <td>{{resident.gender}}</td>
+                        <td>{{resident.residence}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div class="tablita">
+        <h3 class="titulo-tabla"> Listado de Actividades </h3>
+        <table class="lista-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Vivienda</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for economic in economicList %}
+                    <tr>
+                        <td>{{economic.name}}</td>
+                        <td>{{economic.description}}</td>
+                        <td>{{economic.residence}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
