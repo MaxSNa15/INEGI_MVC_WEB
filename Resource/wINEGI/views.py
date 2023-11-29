@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import LocalityForm, ResidenceForm, ResidentForm, EconomicActivityForm
 from .models import Municipality, Locality, Residence, Resident, EconomicActivity
+import json
 
 
 def login_page(request):
@@ -110,16 +111,21 @@ def economic(request):
 @login_required(login_url='login')
 def dasboard(request):
     municipalityList = Municipality.objects.all()
-    localityList = Locality.objects.all()
-    residenceList = Residence.objects.all()
+    #localityList = Locality.objects.all()
+    #residenceList = Residence.objects.all()
     residentList = Resident.objects.all()
-    economicList = EconomicActivity.objects.all()
+    #economicList = EconomicActivity.objects.all()
+
+    # Preparar los datos del municipio para el grafico
+    municipalityData = {
+        'labels': [municipality.name for municipality in municipalityList],
+        'population': [municipality.population for municipality in municipalityList],
+    }
+    # Convertir los datos a formato JSON
+    municipality_json = json.dumps(municipalityData)
 
     return render(request, 'wINEGI/dasboard.html', {
         'title': 'Dasboard',
-        'municipalityList': municipalityList,
-        'localityList': localityList,
-        'residenceList': residenceList,
+        'municipality_json': municipality_json,
         'residentList': residentList,
-        'economicList': economicList,
     })

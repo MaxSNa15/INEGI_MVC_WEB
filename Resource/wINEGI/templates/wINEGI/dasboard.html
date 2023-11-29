@@ -1,83 +1,25 @@
 {% extends "layouts/layout-menu.html" %}
 
 {%block title %}
-    {{title}}
+{{title}}
 {% endblock %}
 
 {% block header_content %}
-    <h3> DASHBOARD </h3>
+<h3> DASHBOARD </h3>
 {% endblock %}
 
 {% block main_content %}
-    <div class="tablita">
-        <h3 class="titulo-tabla"> Listado de Municipios </h3>
-        <table class="lista-table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Region</th>
-                    <th>Poblacion en 2020</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for municipio in municipalityList %}
-                    <tr>
-                        <td>{{municipio.name}}</td>
-                        <td>{{municipio.region}}</td>
-                        <td>{{municipio.population}}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="mi-pastel">
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    <div id="chart-data" data-municipalities='{{ municipality_json|safe }}' style="display:none;"></div>
+
     </div>
 
-    <hr>
-
-    <div class="tablita">
-        <h3 class="titulo-tabla"> Listado de Localidades </h3>
-        <table class="lista-table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Municipios</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for locality in localityList %}
-                    <tr>
-                        <td>{{locality.name}}</td>
-                        <td>{{locality.municipality}}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <hr>
-
-    <div class="tablita">
-        <h3 class="titulo-tabla"> Listado de Viviendas </h3>
-        <table class="lista-table">
-            <thead>
-                <tr>
-                    <th>Dirección</th>
-                    <th>Tipo de Vivienda</th>
-                    <th>Localidad</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for residence in residenceList %}
-                    <tr>
-                        <td>{{residence.adress}}</td>
-                        <td>{{residence.type_of_residence}}</td>
-                        <td>{{residence.locality}}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <hr>
+    {% load static %}
+    <script src="{% static 'js/dashboard.js' %}"></script>
 
     <div class="tablita">
         <h3 class="titulo-tabla"> Listado de Habitantes </h3>
@@ -107,27 +49,4 @@
         </table>
     </div>
 
-    <hr>
-
-    <div class="tablita">
-        <h3 class="titulo-tabla"> Listado de Actividades </h3>
-        <table class="lista-table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Vivienda</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for economic in economicList %}
-                    <tr>
-                        <td>{{economic.name}}</td>
-                        <td>{{economic.description}}</td>
-                        <td>{{economic.residence}}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
 {% endblock %}

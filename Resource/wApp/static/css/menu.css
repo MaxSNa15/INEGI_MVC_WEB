@@ -150,6 +150,12 @@ main input[type="submit"]:hover {
     transition: .3s;
 }
 
+.mi-pastel{
+    width: 50%;
+    border: .1rem solid #111;
+    border-radius: .5rem;
+}
+
 .tablita{
     width: 100%;
     border-collapse: collapse;
